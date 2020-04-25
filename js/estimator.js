@@ -12,6 +12,7 @@ const covid19ImpactEstimator = (data) => {
   } = region;
 
   const currentlyInfected = reportedCases * 10;
+
   const severeCurrentlyInfected = reportedCases * 50;
 
   let days = time;
@@ -23,6 +24,7 @@ const covid19ImpactEstimator = (data) => {
   const projectionFactor = 2 ** Math.trunc(days / 3);
 
   const infectionsByRequestedTime = currentlyInfected * projectionFactor;
+
   const severeInfectionsByRequestedTime =
     severeCurrentlyInfected * projectionFactor;
 
@@ -34,6 +36,7 @@ const covid19ImpactEstimator = (data) => {
   );
 
   const hospitalBeds = totalHospitalBeds * 0.35;
+  
   const hospitalBedsByRequestedTime = Math.trunc(
     hospitalBeds - severeCasesByRequestedTime
   );
